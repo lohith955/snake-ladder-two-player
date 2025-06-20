@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake & Ladder</title>
+    <style>
+        body{
+            background-image: url('snakebg.jpg');
+        }
+        .container{
+            display:grid;
+            grid-template-rows: repeat(10,60px);
+            grid-template-columns: repeat(10,60px);
+            border:2px solid green;
+            background-image: url('snakegame.jpg');
+            background-size: container;
+            border-radius:20px;
+        }
+        .container div{
+            border:1px solid black;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            filter:blur(10px);
+            float:left;
+        }
+        .snakeladder{
+            height:80vh;
+            width:100vw;
+            display:flex;
+            justify-content:space-evenly;
+            align-items:center;
+        }
+        .players{
+            display:flex;
+            justify-content: space-evenly;
+            gap:10px;
+        }
+        .diceroll2{
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            gap:10px;
+            align-items:center;
+            width:200px;
+            background-color:rgb(149, 228, 149);
+            border-radius:50%;
+        }
+        .diceroll{
+            width:200px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            gap:10px;
+            align-items:center;
+            background-color:rgb(149, 228, 149);
+            border-radius:50%;
+
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: black;
+            color: white;
+        }
+        button{
+            border:none;
+            width:80px;
+            height:40px;
+            border-radius: 40px;
+        }
+    </style>
+</head>
+<body>
+    <audio src="win.mp3"></audio>
+    <audio src="diceroll.mp3" id="diceaudio"></audio>
+    <audio src="snake.mp3" id="snake"></audio>
+    <div class="snakeladder">
+        <div class="container"> 
+            <div class="box100">100</div>
+            <div class="box99">99</div>
+            <div class="box97">97</div>
+            <div class="box96">96</div>
+            <div class="box95">95</div>
+            <div class="box98">98</div>
+            <div class="box94">94</div>
+            <div class="box93">93</div>
+            <div class="box92">92</div>
+            <div class="box91">91</div>
+            <div class="box81">81</div>
+            <div class="box82">82</div>
+            <div class="box83">83</div>
+            <div class="box84">84</div>
+            <div class="box85">85</div>
+            <div class="box86">86</div>
+            <div class="box87">87</div>
+            <div class="box88">88</div>
+            <div class="box89">89</div>
+            <div class="box90">90</div>
+            <div class="box80">80</div>
+            <div class="box79">79</div>
+            <div class="box78">78</div>
+            <div class="box77">77</div>
+            <div class="box76">76</div>
+            <div class="box75">75</div>
+            <div class="box74">74</div>
+            <div class="box73">73</div>
+            <div class="box72">72</div>
+            <div class="box71">71</div>
+            <div class="box61">61</div>
+            <div class="box62">62</div>
+            <div class="box63">63</div>
+            <div class="box64">64</div>
+            <div class="box66">66</div>
+            <div class="box67">67</div>
+            <div class="box65">65</div>
+            <div class="box68">68</div>
+            <div class="box69">69</div>
+            <div class="box70">70</div>
+            <div class="box60">60</div>
+            <div class="box59">59</div>
+            <div class="box53">53</div>
+            <div class="box54">54</div>
+            <div class="box55">55</div>
+            <div class="box56">56</div>
+            <div class="box57">57</div>
+            <div class="box58">58</div>
+            <div class="box52">52</div>
+            <div class="box51">51</div>
+            <div class="box41">41</div>
+            <div class="box42">42</div>
+            <div class="box43">43</div>
+            <div class="box44">44</div>
+            <div class="box45">45</div>
+            <div class="box46">46</div>
+            <div class="box47">47</div>
+            <div class="box48">48</div>
+            <div class="box49">49</div>
+            <div class="box50">50</div>
+            <div class="box40">40</div>
+            <div class="box39">39</div>
+            <div class="box38">38</div>
+            <div class="box37">37</div>
+            <div class="box36">36</div>
+            <div class="box35">35</div>
+            <div class="box34">34</div>
+            <div class="box33">33</div>
+            <div class="box32">32</div>
+            <div class="box31">31</div>
+            <div class="box21">21</div>
+            <div class="box22">22</div>
+            <div class="box23">23</div>
+            <div class="box24">24</div>
+            <div class="box25">25</div>
+            <div class="box26">26</div>
+            <div class="box27">27</div>
+            <div class="box28">28</div>
+            <div class="box29">29</div>
+            <div class="box30">30</div>
+            <div class="box20">20</div>
+            <div class="box19">19</div>
+            <div class="box18">18</div>
+            <div class="box17">17</div>
+            <div class="box16">16</div>
+            <div class="box15">15</div>
+            <div class="box14">14</div>
+            <div class="box13">13</div>
+            <div class="box12">12</div>
+            <div class="box11">11</div>
+            <div class="box1">1</div>
+            <div class="box2">2</div>
+            <div class="box3">3</div>
+            <div class="box4">4</div>
+            <div class="box5">5</div>
+            <div class="box6">6</div>
+            <div class="box7">7</div>
+            <div class="box8">8</div>
+            <div class="box9">9</div>
+            <div class="box10">10</div>
+        </div>
+    </div>
+    <div class="players">
+        <div class="diceroll">
+            <p class="one">Player 1</p>
+            <button onclick="clickme()">Roll Dice</button>
+            <img src="" alt="" class="image1" align="center" width="20px" height="20px">
+        </div>
+        <div class="diceroll2">
+            <p class="one">Player 2</p>
+            <button onclick="person2()">Roll Dice</button>
+            <img src="" alt="" class="image2" align="center" width="20px" height="20px">
+        </div>
+    </div>
+    <script>
+        function won(){
+            const audio=document.getElementById("winaudio")
+            audio.play()
+        }
+        let count=0
+        let div=document.createElement('div')
+        div.style.height="50px";
+        div.style.width="50px";
+        div.style.backgroundColor="red";
+        div.style.borderRadius="20px";
+        div.style.position="Absolute";
+        div.style.filter="blur(0)";
+        let turn=1;
+        let gameover=false;
+        function diceroll(){
+            const audio=document.getElementById("diceaudio")
+            audio.play()
+        }
+        function snake(){
+            const audio=document.getElementById("snake")
+            audio.play()
+        }
+        function clickme(){
+            if(turn!=1||gameover) return ;
+            step=Math.floor((Math.random()*6))+1
+            document.getElementsByClassName('image1')[0].setAttribute('src',`face${step}.png`)
+            diceroll()
+            const ladder={4:25,13:46,33:49,50:69,42:63,62:81,74:92}
+            const snake={99:41,89:53,76:58,66:45,54:31,43:18,40:3,27:5}
+            if(count+step<=100){
+                count=count+step
+                if(ladder[count]){
+                    count=ladder[count]
+                    document.getElementsByClassName(`box${count}`)[0].appendChild(div)
+                }
+                if(snake[count]){
+                    count=snake[count]
+                    document.getElementsByClassName(`box${count}`)[0].appendChild(div)
+                    snake()
+                }
+                else{
+                    count=count
+                    document.getElementsByClassName(`box${count}`)[0].appendChild(div)
+                }
+            }
+            if(step==6){
+                turn=1;
+                return
+            }
+            if (count === 100){
+                alert("Player 1 wins!");
+                game0ver=true
+            }
+            turn=2
+        }
+        let count1=0;
+        let div1=document.createElement('div')
+        div1.style.height="50px"
+        div1.style.width="50px"
+        div1.style.backgroundColor="black"
+        div1.style.borderRadius="20px"
+        div1.style.position="Absolute"
+        function person2(){
+            if(turn!=2 ||gameover){
+                return;
+            }
+            step1=Math.floor((Math.random()*6))+1
+            document.getElementsByClassName('image2')[0].setAttribute('src',`face${step1}.png`)
+            diceroll()
+            const ladder={4:25,13:46,33:49,50:69,42:63,62:81,74:92}
+            const snake={99:41,89:53,76:58,66:45,54:31,43:18,40:3,27:5}
+            if(count1+step1<=100){
+                count1+=step1
+                if(ladder[count1]){
+                    count1=ladder[count1]
+                    document.getElementsByClassName(`box${count1}`)[0].appendChild(div1)
+                }
+                if(snake[count1]){
+                    count1=snake[count1]
+                    document.getElementsByClassName(`box${count1}`)[0].appendChild(div1)
+                    snake()
+                }
+                else{
+                    count1=count1
+                    document.getElementsByClassName(`box${count1}`)[0].appendChild(div1)
+                }
+                console.log(count1)
+            }
+            if(step1==6){
+                turn=2;
+                return
+            }
+            if (count1 === 100){
+                alert("Player 2 wins!");
+                won()
+                gameover=true
+            }
+            turn=1;
+        }
+        
+    </script>
+</body>
+</html>
